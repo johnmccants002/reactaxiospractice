@@ -15,6 +15,12 @@ export default function Header() {
                     Random Quote
                 </div>
             </Link>
+            <Link to="/robos" style={{textDecoration: 'none'}}>
+                <div>
+                    Robos
+                </div>
+            </Link>
+
 
         </div>
     )
