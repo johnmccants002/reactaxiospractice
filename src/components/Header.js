@@ -20,6 +20,11 @@ export default function Header() {
                     Robos
                 </div>
             </Link>
+            <Link to="/pokemon" style={{textDecoration: 'none'}}>
+                <div>
+                    Pokemon
+                </div>
+            </Link>
 
 
         </div>
