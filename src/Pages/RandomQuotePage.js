@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 
 
@@ -7,14 +7,17 @@ const baseURL = "https://api.quotable.io/random"
 export default function RandomQuotePage() {
     const [quote, setQuote] = React.useState(null)
     const [error, setError] = React.useState(null)
+    const [items, setItems] = useState([])
 
     React.useEffect(() => {
         getQuote()
+        
     }, []) 
 
     function getQuote() {
         axios.get(baseURL).then((response) => {
             setQuote(response.data)
+            
         }).catch((err) => {
             setError(err)
         })
