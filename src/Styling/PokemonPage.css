@@ -1,0 +1,21 @@
+.savedPokemon {
+    display: flex;
+    flex-direction: column;
+    
+    padding-top: 40px;
+    
+}
+
+.savedPokemonContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    position: relative;
+}
+
+.savedPokemon > button {
+   
+}
+
+

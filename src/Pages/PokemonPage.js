@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useLocalStorage} from '../localStorage'
+import '../Styling/PokemonPage.css'
 
 
 const baseURL = "https://pokeapi.co/api/v2/pokemon"
@@ -12,6 +13,9 @@ export default function PokemonPage() {
     const [pokeText, setPokeText] = useState('')
     const [poke, setPoke] = useLocalStorage('pokemons', [])
    
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
 
     function handleChange(event) {
         setPokeText(event.target.value)
@@ -36,9 +40,9 @@ export default function PokemonPage() {
 
         for (let i = 0; i < poke.length; i++) {
            views.push(<div className="savedPokemon">
-            {poke[i].forms[0].name}
+            {capitalizeFirstLetter(poke[i].forms[0].name)}
             <img src={poke[i].sprites.front_shiny}></img>
-            <button id={i} onClick={removePokemon}>Remove Pokemon</button>
+            <button class="removePokemon" id={i} onClick={removePokemon}>Remove Pokemon</button>
         </div>)
         }
         console.log("These are the views", views)
@@ -93,14 +97,14 @@ export default function PokemonPage() {
             {pokemon ? 
                 <div>
                     <img src={pokemon.sprites.front_shiny} alt=""></img>
-                    <h3>{pokemon.forms[0].name}</h3>
+                    <h3>{capitalizeFirstLetter(pokemon.forms[0].name)}</h3>
                     <>{alreadySaved()}</>
                     
                 </div> 
             : <div>Pokemon not found</div>}
             <br/><br/>
             <div>Your favorite Pokemon</div>
-            <div>
+            <div className="savedPokemonContainer">
                 {displayPokemon()}
             </div>
         </div>
